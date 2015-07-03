@@ -1,6 +1,5 @@
 'use strict';
 
-process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
 var count = [0, 0, 0];
