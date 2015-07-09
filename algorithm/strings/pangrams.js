@@ -1,11 +1,10 @@
 'use strict';
 
 /*
-  we'll check if every letter
-  from a to z is on the sentence using charCodeAt
-  so we'll go through the whole sentence and remove the letter
-  at the end the sentence will be trimmed and if has no length
-  we have a pangram
+  we'll check if every letter from a to z is on the sentence
+  for that a scan index, i.e. `scanner`, can be defined
+  if we end up at letter `a` or 97 we have a pangram
+  if we are somewhere in between we haven't one
 */
 
 var input = '';
