@@ -15,9 +15,9 @@ var words = [null,
 
 process.stdin.on('end', function(){
   var time = input.trim().split('\n').map(Number);
-  var past = time[1] <= 30;
+  var to = time[1] > 30;
 
-  if(!past){
+  if(to){
     time[0] += 1;
     time[1] = 60 - time[1];
   }
@@ -26,14 +26,14 @@ process.stdin.on('end', function(){
     console.log(words[time[0]], 'o\' clock');
   } else if(/15|45/.test(time[1])){
     console.log('quarter %s %s',
-      past ? 'past' : 'to',
+      to ? 'to' : 'past',
       words[time[0]]
     );
   } else if(time[1] !== 30){
     console.log('%s minute%s %s %s',
       words[time[1]] || 'twenty ' + words[Number(time[1].toString()[1])],
       time[1] > 1 ? 's' : '',
-      past ? 'past' : 'to',
+      to ? 'to' : 'past',
       words[time[0]]
     );
   } else {
