@@ -70,4 +70,20 @@ instead of
 
 So that's some simple but already funky business.
 
-## 
+## Modules
+
+Quote from here: http://learn.perl.org/modules/
+
+> Perl modules are a set of related functions in a library file. They are specifically designed to be reusable by other modules or programs. There are 108,000 modules ready for you to use on the Comprehensive Perl Archive Network.
+
+The Comprehensive Perl Archive Network is: http://www.cpan.org/
+
+So that is the modules repository. What's the package manager?
+
+> How do I install a module?  If you haven't already installed cpanm, [do that first](https://metacpan.org/module/App::cpanminus#INSTALLATION is the):  cpan App::cpanminus Then to install any module from CPAN  cpanm Module::Name
+
+So `cpan` is the package manager. Let's install it.
+
+    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+
+Ok that's done, now to really find out what does perl really look like. 
