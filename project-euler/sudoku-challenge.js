@@ -1,36 +1,79 @@
 'use strict';
 
+// var rowSum = 9*10/2;
+var sudoku = {
+  board: '',
+  empty: [],
+  length: 9,
+  checkRow: function(i, j, value){
+    var len = this.length;
+    var index = -1;
+    while(index < len){
+      if(value === this.board[++index][j]){
+        return false;
+      }
+    }
+    return true;
+  },
+  checkColumn: function(i, j, value){
+    var len = this.length;
+    var index = -1;
+    while(index < len){
+      if(value === this.board[i][++index]){
+        return false;
+      }
+    }
+    return true;
+  },
+  checkBox: function(i, j, value){
+    var len = this.boxLength;
+    var length = this.length;
+    var imin = Math.floor(i/len);
+    var jmin = Math.floor(j/len);
+    var imax = imin + len;
+    var jmax = jmin + len;
+
+    for(var index = imin; index < imax; ++index){
+      for(var jndex = jmin; jndex < jmax; ++jndex){
+        if(value === this.board[index*length + jndex]){
+          return false;
+        }
+      }
+    }
+    return true;
+  },
+  checkValue: function(i, j, value){
+    var check = this.checkRow(i,j, value) &&
+      this.checkColumn(i,j, value) &&
+      this.checkBox(i,j, value);
+
+    if(check){ return true; }
+    return false;
+
+  }
+};
+
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
-var sudoku = [];
-
 process.stdin.on('data', function(data){
-  sudoku += data || '';
+  sudoku.board += data || '';
 });
-
-var empty = {};
-var rowSum = 9*10/2;
-
-// 012345678'.split('').map(Number).forEach(function(a){ console.log(a, Math.floor(a/3)); });
+// n*(n+1)/2 sum for n natural numbers
 
 process.stdin.on('end', function(){
-  sudoku = sudoku.trim().match(/(\d[ ]*){9}/g).map(function(row, i){
-    var sum = 0;
-    row = row.split('').map(function(column, j){
-      sum += column = Number(column);
-      if(column){ return column; }
-      if(!empty[i]){ empty[i] = []; }
-      empty[i].push(j);
-      return column;
-    });
+  // cleanup the board
+  sudoku.board = sudoku.board.replace(/[\n ]+/g, '').trim();
 
-    // the easy ones
-    if(empty[i] && empty[i].length < 2){
-      row[empty[i][0]] = rowSum - sum;
-      delete empty[i];
-    }
-
-    return row;
+  // get empty places first
+  sudoku.board.replace(/0/g, function($0, index){
+    sudoku.empty.push([Math.floor(index/sudoku.length), index % sudoku.length]);
   });
+
+  // parse the board to a 1D array
+  sudoku.board = sudoku.board.match(/\d{6}/g).map(function(row){
+    return row.split('').map(Number);
+  });
+
+  console.log(sudoku);
 });
