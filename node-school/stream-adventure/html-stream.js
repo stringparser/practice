@@ -7,9 +7,13 @@ var tr = trumpet();
 
 process.stdin.pipe(tr).pipe(process.stdout);
 
-var stream = tr.select('.loud').createStream();
+var ws = tr.select('.loud').createStream();
 
-stream.pipe(through(function(buff, enc, next){
-  stream.write(buff.toString().toUpperCase());
-  next();
-}));
+var transform = function(){
+  return through(function(buff, enc, next){
+    this.push(buff.toString().toUpperCase());
+    next();
+  });
+};
+
+ws.pipe(transform()).pipe(ws);
