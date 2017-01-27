@@ -1,1 +1,6 @@
+
+# node
 node_modules
+
+# Scala build files
+lang/scala/**/target
