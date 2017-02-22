@@ -1,0 +1,16 @@
+{
+  "name": "css-height",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Javier Carrillo Milla <stringparser@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}
