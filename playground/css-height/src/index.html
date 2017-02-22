@@ -81,12 +81,33 @@
     border: 1px solid orangered;
   }
 
+  /**
+   * section and button style can be changed
+   * only height and weight should always be given
+  **/
+  .activity-section {
+    padding: 10px;
+  }
+  .activity-section .btn {
+    width: 45%;
+    height: 45%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /**
+   * fixed values for height and width
+  **/
   .activity-section.values-fixed {
     width: 320px;
     height: 320px;
-    padding: 10px;
   }
 
+  /**
+   * dynamic values for height and width
+  **/
   .u-portrait .activity-section.values-dynamic {
     width: 100%;
     /* height ~ container width/height * 100 - 4 times the buton margin */
@@ -97,15 +118,6 @@
     width: 56.185%;
     height: 100%;
   }
-
-  .activity-section .btn {
-    width: 45%;
-    height: 45%;
-    margin: 2.5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   </style>
 </head>
 
@@ -113,7 +125,7 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      (⌐■_■) The smallest dimension wins
+      <p> (⌐■_■) The smallest dimension wins </p>
     </div>
   </div>
 
