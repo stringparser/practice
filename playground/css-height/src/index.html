@@ -10,17 +10,23 @@
 
   <style>
 
+  /**
+   * important, see:
+   * https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+  **/
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
 
+  /** to be nice :) **/
   html,
   body {
     background-color: #f7f7f9;
   }
 
+  /** to be nice :) **/
   body > .panel {
     text-align: center;
     border-radius: 0;
@@ -32,6 +38,7 @@
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 
+  /** to be nice :) **/
   .app-main {
     display: flex;
     flex-wrap: wrap;
@@ -44,14 +51,12 @@
     }
   }
 
+  /** to be nice :) **/
   .main-mobile {
     text-align: center;
   }
-
+  /** to be nice :) **/
   .mobile-activity {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 5vw;
     text-align: right;
@@ -60,6 +65,16 @@
     background: snow;
     border-radius: 8px;
   }
+
+  /**
+   * activity container
+  **/
+  .mobile-activity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /** these emulates the viewport sizes in a iphone 5 **/
   .mobile-activity.u-portrait {
     width: 320px;
     height: 568px;
@@ -71,16 +86,24 @@
     flex-direction: row;
   }
 
+  /**
+   * to be nice :)
+  **/
   .activity-title {
     margin: 0 10px 10px 0;
     font-weight: bold;
   }
+
+  /**
+   * button (child) container
+   * display: flex and flex-wrap: wrap matter
+   * the border is to highlight the container
+  **/
   .activity-section {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid orangered;
   }
-
   /**
    * section and button style can be changed
    * only height and weight should always be given
@@ -107,14 +130,15 @@
 
   /**
    * dynamic values for height and width
+   * for portrait container height is ~ width/height * 100 - 4 * button margin
+   * for landscape container width is ~ width/height * 100 - 4 * button margin
+   * NOTE: why approx? I not sure yet, could be the button margin
   **/
   .u-portrait .activity-section.values-dynamic {
     width: 100%;
-    /* height ~ container width/height * 100 - 4 times the buton margin */
     height: 56.185%;
   }
   .u-landscape .activity-section.values-dynamic {
-    /* width ~ container width/height * 100 - 4 times the buton margin */
     width: 56.185%;
     height: 100%;
   }
@@ -125,7 +149,7 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <p> (⌐■_■) The smallest dimension wins </p>
+      <p> tl;dr (⌐■_■) the smallest dimension wins </p>
     </div>
   </div>
 
