@@ -1,80 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://avatars2.githubusercontent.com/u/20668362?v=3&s=48" type="image/jpeg" sizes="48x48">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="./main.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://avatars2.githubusercontent.com/u/20668362?v=3&s=48" type="image/jpeg" sizes="48x48">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <body>
+  <style>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        (⌐■_■) The smallest dimension wins
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background-color: #f7f7f9;
+  }
+
+  body > .panel {
+    text-align: center;
+    border-radius: 0;
+  }
+  body > .panel .icon {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  body > .panel .panel-body {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  .app-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  @media (max-width: 64em) {
+    .app-main {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .main-mobile {
+    text-align: center;
+  }
+
+  .mobile-activity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 5vw;
+    text-align: right;
+    margin-top: 20px;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    background: snow;
+    border-radius: 8px;
+  }
+  .mobile-activity.u-portrait {
+    width: 320px;
+    height: 568px;
+    flex-direction: column;
+  }
+  .mobile-activity.u-landscape {
+    width: 568px;
+    height: 320px;
+    flex-direction: row;
+  }
+
+  .activity-title {
+    margin: 0 10px 10px 0;
+    font-weight: bold;
+  }
+  .activity-section {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid orangered;
+  }
+
+  .activity-section.values-fixed {
+    width: 320px;
+    height: 320px;
+    padding: 10px;
+  }
+
+  .u-portrait .activity-section.values-dynamic {
+    width: 100%;
+    /* height ~ container width/height * 100 - 4 times the buton margin */
+    height: 56.185%;
+  }
+  .u-landscape .activity-section.values-dynamic {
+    /* width ~ container width/height * 100 - 4 times the buton margin */
+    width: 56.185%;
+    height: 100%;
+  }
+
+  .activity-section .btn {
+    width: 45%;
+    height: 45%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      (⌐■_■) The smallest dimension wins
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="main-mobile">
+      <h4>Portrait: fixed height and width</h4>
+      <p>(taking the smallest dimension works)</p>
+      <div class="mobile-activity u-portrait">
+        <div class="activity-title">
+            Container
+        </div>
+        <div class="activity-section values-fixed">
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+        </div>
       </div>
     </div>
 
-    <div class="app-main">
-      <div class="main-mobile">
-        <h4>Portrait: fixed height and width</h4>
-        <p>(taking the smallest dimension works)</p>
-        <div class="mobile-activity u-portrait">
-          <div class="activity-title">
-              Container
-          </div>
-          <div class="activity-section values-fixed">
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-          </div>
+    <div class="main-mobile">
+      <h4>Landscape: fixed height and width</h4>
+      <p>(using smallest dimension works)</p>
+      <div class="mobile-activity u-landscape">
+        <div class="activity-section values-fixed">
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
         </div>
       </div>
-
-      <div class="main-mobile">
-        <h4>Landscape: fixed height and width</h4>
-        <p>(using smallest dimension works)</p>
-        <div class="mobile-activity u-landscape">
-          <div class="activity-section values-fixed">
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-mobile">
-        <h4>Portrait: variable height and width</h4>
-        <p>(width 100%, height based in width/height * 100)</p>
-        <div class="mobile-activity u-portrait">
-          <div class="activity-section values-dynamic">
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-mobile">
-        <h4>Landscape: variable height and width</h4>
-        <p>(height 100%, width based in height/width * 100)</p>
-        <div class="mobile-activity u-landscape">
-          <div class="activity-section values-dynamic">
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-            <span class="btn btn-default">button text</span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-  </body>
+    <div class="main-mobile">
+      <h4>Portrait: variable height and width</h4>
+      <p>(width 100%, height based in width/height * 100)</p>
+      <div class="mobile-activity u-portrait">
+        <div class="activity-section values-dynamic">
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-mobile">
+      <h4>Landscape: variable height and width</h4>
+      <p>(height 100%, width based in height/width * 100)</p>
+      <div class="mobile-activity u-landscape">
+        <div class="activity-section values-dynamic">
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+          <span class="btn btn-default">button text</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
 </html>
