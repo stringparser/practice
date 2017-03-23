@@ -1,0 +1,27 @@
+{
+  "name": "practice",
+  "main": "index.js",
+  "author": "Javier Carrillo Milla <stringparser@gmail.com>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development electron main.js"
+  },
+  "homepage": "https://github.com/stringparser/practice.git",
+  "repository": {
+    "url": "git+https://github.com/stringparser/practice.git",
+    "type": "git"
+  },
+  "description": "",
+  "bugs": {
+    "url": "https://github.com/stringparser/practice/issues"
+  },
+  "devDependencies": {
+    "electron": "^1.6.2",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "d3": "^4.7.3"
+  }
+}
