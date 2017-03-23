@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://avatars2.githubusercontent.com/u/20668362?v=3&s=48" type="image/jpeg" sizes="48x48">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .main-mobile {
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+
+    .mobile-controller {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .controller-section {
+      width: 100vw;
+      height: 100vw;
+
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      /* if there is overflowing content go to next line (wrap) */
+      flex-wrap: wrap;
+    }
+    .controller-section .btn {
+      width: 45%;
+      height: 45%;
+      margin: 2.5%;
+
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body class="main-mobile">
+  <div class="mobile-controller">
+    <div class="controller-title">
+        Container
+    </div>
+    <div class="controller-section">
+      <span class="btn btn-default">button text</span>
+      <span class="btn btn-default">button text</span>
+      <span class="btn btn-default">button text</span>
+      <span class="btn btn-default">button text</span>
+    </div>
+  </div>
+</body>
+</html>
