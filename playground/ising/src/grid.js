@@ -15,7 +15,7 @@ exports = module.exports = {};
 
 // Generates and Nx by Ny grid with pointers to each tile in the grid
 // return a map from [i,j] to the corresponding tile
-exports.generate = function generateGrid(Nx, Ny, width) {
+exports.generate = function generateGrid({ dim: [Nx, Ny], width, beta }) {
 
   var el = d3.select('body').append('svg')
     .remove()
@@ -54,31 +54,29 @@ exports.generate = function generateGrid(Nx, Ny, width) {
   return {
     el,
     dim: [Nx, Ny],
+    beta,
     rects,
     spins,
+    stats: { count: 0, sites: Nx * Ny },
     neighbours
   };
 }
 
-exports.update = function updateGrid(grid) {
-  let { dim: [Nx, Ny], rects, spins, neighbours } = grid;
+exports.update = function updateGrid (grid) {
+  let { beta, dim: [Nx, Ny], rects, spins, neighbours } = grid;
 
   // samples a random cell
   let x = ~~(Nx * Math.random());
   let y = ~~(Ny * Math.random());
 
-  let beta = 1/2.26; // 1/kT
-  let position = [x, y].join(',');
-
-  // colors this red to display with cell is being updated
-  rects[position].transition().attr('fill', 'lightgrey');
+  let randomPosition = [x, y].join(',');
 
   // calculate the sum of neighbors spins
   let neighborsSpin = 0;
 
-  d3.range(neighbours.length).forEach(function(i){
-    let x1 = x + neighbours[i][0];
-    let y1 = y + neighbours[i][1];
+  neighbours.forEach(function (neigh) {
+    let x1 = x + neigh[0];
+    let y1 = y + neigh[1];
 
     if (x1 >= 0 & x1 < Nx & y >= 0 & y < Ny) {
       neighborsSpin = neighborsSpin + spins[[x1, y1]];
@@ -89,25 +87,26 @@ exports.update = function updateGrid(grid) {
   // - 1st compute the probability of changing to spin 1 and samples
   // - 2nd assign the new spin according to this probability
 
-  var transitionProbabilty = (
+  let transitionProbabilty = (
     Math.exp(beta * neighborsSpin) /
     ( Math.exp(beta * neighborsSpin) + Math.exp(-beta * neighborsSpin) )
   );
 
   let newSpinValue = null;
+  let oldSpinValue = spins[randomPosition];
 
   if (Math.random() < transitionProbabilty) {
-    newSpinValue = spins[position] = 1;
+    newSpinValue = spins[randomPosition] = 1;
   } else {
-    newSpinValue = spins[position] = -1;
+    newSpinValue = spins[randomPosition] = -1;
   }
 
-  // color the new value of the spin
-  // use a delay so we see the transition
-  rects[position]
-    .transition()
-    .delay(300)
-    .attr('fill', spin.getColor(newSpinValue));
+  if (oldSpinValue !== newSpinValue) {
+    rects[randomPosition].attr('fill', 'black');
+    rects[randomPosition]
+      .transition()
+      .delay(200).attr('fill', spin.getColor(newSpinValue));
+  }
 
   return this;
 };
